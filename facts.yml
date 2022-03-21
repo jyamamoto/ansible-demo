@@ -1,0 +1,9 @@
+---
+- name: facts playbook
+  hosts: localhost
+
+  tasks:
+    - name: Collect all facts of host
+      setup:
+        gather_subset:
+          - 'all'
