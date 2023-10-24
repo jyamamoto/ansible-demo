@@ -1,0 +1,26 @@
+---
+- name: Copy-file.yml
+  hosts: all
+  become: yes
+
+  tasks:
+    # ref: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/copy_module.html
+    - name: Backup de un file 
+      ansible.builtin.copy:
+        src: /etc/hosts
+        dest: /etc/hosts.bkp
+        remote_src: yes
+
+    # ref: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/get_url_module.html
+    - name: Download foo.conf
+      ansible.builtin.get_url:
+        url: http://example.com/path/file.conf
+        dest: /etc/foo.conf
+        mode: '0440'
+    
+    # ref: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/file_module.html
+    - name: Create a directory if it does not exist
+      ansible.builtin.file:
+        path: /etc/some_directory
+        state: directory
+        mode: '0755'
