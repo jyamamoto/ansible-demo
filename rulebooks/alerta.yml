@@ -12,5 +12,5 @@
       condition: event.payload.alerta == 1 or event.payload.alerta == "1"
       action:
         run_job_template:
-          name: fact
+          name: facts
           organization: Default
